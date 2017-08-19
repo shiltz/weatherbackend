@@ -56,7 +56,7 @@ public class WeatherController {
                 .encoder(new GsonEncoder())
                 .decoder(new GsonDecoder())
                 .target(WeatherClient.class, "http://api.openweathermap.org/");
-        WeatherForecastSummary weatherForecast = weatherClient.getWeatherForecastSummary(cityCodes.substring(0,cityCodes.length()-1));
+        WeatherForecastSummary weatherForecast = weatherClient.getWeatherForecastSummary(cityCodes.substring(0, cityCodes.length() - 1));
         return weatherForecast;
     }
 
@@ -71,8 +71,8 @@ public class WeatherController {
         HourlyForecast weatherForecast = weatherClient.getHourlyWeatherForecastCity(cityCodeMap.get(city));
         LocalDateTime nextDay = LocalDate.now().plusDays(1).atStartOfDay();
         weatherForecast.getList().removeIf(e ->
-                new Date((long)(e.getDt()*1000)).toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime()
-                 .isAfter(nextDay));
+                new Date((long) (e.getDt() * 1000)).toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime()
+                        .isAfter(nextDay));
 
         DailyForecast dailyForecast = weatherClient.getDailyWeatherForecastCity(cityCodeMap.get(city));
 
@@ -83,4 +83,10 @@ public class WeatherController {
 
         return cityForecastResponse;
     }
+
+    @RequestMapping("/ping")
+    public String getPing() {
+        return "Hello";
+    }
+
 }
