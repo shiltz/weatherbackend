@@ -17,7 +17,6 @@ public interface WeatherClient {
     @RequestLine("GET /data/2.5/group?id={cities}&units=metric&appid=" + API_KEY)
     WeatherForecastSummary getWeatherForecastSummary(@Param("cities") String cities);
 
-
     @RequestLine("GET /data/2.5/forecast?id={city}&units=metric&appid=" + API_KEY)
     HourlyForecast getHourlyWeatherForecastCity(@Param("city") String city);
 

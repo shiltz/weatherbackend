@@ -1,0 +1,33 @@
+{
+  "coord": {
+    "lon": 31.03,
+    "lat": -29.86
+  },
+  "base": "stations",
+  "dt": 1.503670329E9,
+  "id": 1007311.0,
+  "name": "Durban",
+  "visibility": 0.0,
+  "main": {
+    "temp": 19.68,
+    "pressure": 1033.9,
+    "humdity": 0.0,
+    "temp_min": 19.68,
+    "temp_max": 19.68
+  },
+  "weather": [
+    {
+      "id": 800,
+      "main": "Clear",
+      "description": "clear sky",
+      "icon": "01d"
+    }
+  ],
+  "clouds": {
+    "all": 0.0
+  },
+  "wind": {
+    "speed": 8.06,
+    "deg": 196.501
+  }
+}

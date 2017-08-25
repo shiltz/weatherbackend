@@ -1,0 +1,185 @@
+{
+  "cod": 200,
+  "message": "11.0200629",
+  "cnt": 7,
+  "list": [
+    {
+      "dt": 1503651600,
+      "temp": {
+        "day": 19.68,
+        "min": 18.47,
+        "max": 19.68,
+        "night": 18.47,
+        "eve": 19.68,
+        "morn": 19.68
+      },
+      "pressure": 1033.9,
+      "humidity": 100,
+      "weather": [
+        {
+          "id": 800,
+          "main": "Clear",
+          "description": "sky is clear",
+          "icon": "01d"
+        }
+      ],
+      "speed": 8.06,
+      "deg": 197,
+      "clouds": 0
+    },
+    {
+      "dt": 1503738000,
+      "temp": {
+        "day": 19.01,
+        "min": 17.48,
+        "max": 20.57,
+        "night": 20.57,
+        "eve": 19.79,
+        "morn": 17.48
+      },
+      "pressure": 1036.24,
+      "humidity": 100,
+      "weather": [
+        {
+          "id": 800,
+          "main": "Clear",
+          "description": "sky is clear",
+          "icon": "01d"
+        }
+      ],
+      "speed": 3.11,
+      "deg": 36,
+      "clouds": 0
+    },
+    {
+      "dt": 1503824400,
+      "temp": {
+        "day": 20.57,
+        "min": 18.67,
+        "max": 20.57,
+        "night": 18.7,
+        "eve": 19.89,
+        "morn": 19.91
+      },
+      "pressure": 1033.12,
+      "humidity": 100,
+      "weather": [
+        {
+          "id": 500,
+          "main": "Rain",
+          "description": "light rain",
+          "icon": "10d"
+        }
+      ],
+      "speed": 1.16,
+      "deg": 198,
+      "clouds": 24
+    },
+    {
+      "dt": 1503910800,
+      "temp": {
+        "day": 19.94,
+        "min": 18.38,
+        "max": 21.64,
+        "night": 21.59,
+        "eve": 21.64,
+        "morn": 18.38
+      },
+      "pressure": 1032.81,
+      "humidity": 100,
+      "weather": [
+        {
+          "id": 500,
+          "main": "Rain",
+          "description": "light rain",
+          "icon": "10d"
+        }
+      ],
+      "speed": 9.22,
+      "deg": 31,
+      "clouds": 56
+    },
+    {
+      "dt": 1503997200,
+      "temp": {
+        "day": 21.57,
+        "min": 15.09,
+        "max": 21.57,
+        "night": 17.55,
+        "eve": 18.49,
+        "morn": 15.09
+      },
+      "pressure": 993.26,
+      "humidity": 0,
+      "weather": [
+        {
+          "id": 500,
+          "main": "Rain",
+          "description": "light rain",
+          "icon": "10d"
+        }
+      ],
+      "speed": 4.03,
+      "deg": 31,
+      "clouds": 0
+    },
+    {
+      "dt": 1504083600,
+      "temp": {
+        "day": 20.92,
+        "min": 15.39,
+        "max": 20.92,
+        "night": 15.39,
+        "eve": 18.35,
+        "morn": 17.09
+      },
+      "pressure": 1000.03,
+      "humidity": 0,
+      "weather": [
+        {
+          "id": 500,
+          "main": "Rain",
+          "description": "light rain",
+          "icon": "10d"
+        }
+      ],
+      "speed": 11.18,
+      "deg": 216,
+      "clouds": 3
+    },
+    {
+      "dt": 1504170000,
+      "temp": {
+        "day": 19.46,
+        "min": 13.67,
+        "max": 19.46,
+        "night": 13.67,
+        "eve": 15.21,
+        "morn": 16.01
+      },
+      "pressure": 1003.43,
+      "humidity": 0,
+      "weather": [
+        {
+          "id": 500,
+          "main": "Rain",
+          "description": "light rain",
+          "icon": "10d"
+        }
+      ],
+      "speed": 4.29,
+      "deg": 187,
+      "clouds": 14
+    }
+  ],
+  "city": {
+    "id": 1007311,
+    "name": "Durban",
+    "coord": {
+      "lon": 31.0292,
+      "lat": -29.858
+    },
+    "country": "ZA",
+    "population": 0
+  }
+}
