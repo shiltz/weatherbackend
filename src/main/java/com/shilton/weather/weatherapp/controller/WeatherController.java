@@ -3,6 +3,7 @@ package com.shilton.weather.weatherapp.controller;
 
 import com.shilton.weather.weatherapp.models.*;
 import com.shilton.weather.weatherapp.restclient.WeatherClient;
+import com.shilton.weather.weatherapp.utility.CityListReader;
 import feign.Feign;
 import feign.gson.GsonDecoder;
 import feign.gson.GsonEncoder;
@@ -12,12 +13,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.PostConstruct;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 @RestController
 @CrossOrigin
@@ -27,15 +27,18 @@ public class WeatherController {
 
     private static Map<String, String> cityCodeMap = new HashMap<>();
 
-    static {
-        cityCodeMap.put("Johannesburg", "993800");
-        cityCodeMap.put("Cape Town", "3369157");
-        cityCodeMap.put("Durban", "1007311");
+    @PostConstruct
+    public void init() throws Exception {
+        List<City> cityList = CityListReader.getCityList();
+        cityList.forEach(city -> {
+            cityCodeMap.put(city.getName().toLowerCase(), String.valueOf(city.getId()));
+        });
     }
-
 
     @RequestMapping("/current/{city}")
     public CurrentForecast getCurrentWeatherForecast(@PathVariable("city") String city) {
+        city = city.toLowerCase();
+
         WeatherClient weatherClient = Feign.builder()
                 .client(new OkHttpClient())
                 .encoder(new GsonEncoder())
@@ -47,21 +50,22 @@ public class WeatherController {
 
     @RequestMapping("/summary")
     public WeatherForecastSummary getWeatherSummary() {
-        String cityCodes = cityCodeMap.values()
-                .stream()
-                .reduce("", (arg1, arg2) -> arg1 + arg2 + ",");
+        String cityCodes = cityCodeMap.get("durban") + "," +
+                cityCodeMap.get("johannesburg") + "," +
+                cityCodeMap.get("cape town");
 
         WeatherClient weatherClient = Feign.builder()
                 .client(new OkHttpClient())
                 .encoder(new GsonEncoder())
                 .decoder(new GsonDecoder())
                 .target(WeatherClient.class, "http://api.openweathermap.org/");
-        WeatherForecastSummary weatherForecast = weatherClient.getWeatherForecastSummary(cityCodes.substring(0, cityCodes.length() - 1));
+        WeatherForecastSummary weatherForecast = weatherClient.getWeatherForecastSummary(cityCodes.substring(0, cityCodes.length()));
         return weatherForecast;
     }
 
     @RequestMapping("/forecast/{city}")
     public CityForecastResponse getWeatherForecastCity(@PathVariable("city") String city) {
+        city = city.toLowerCase();
 
         WeatherClient weatherClient = Feign.builder()
                 .client(new OkHttpClient())
@@ -83,6 +87,19 @@ public class WeatherController {
 
         return cityForecastResponse;
     }
+
+    @RequestMapping("/meta/map/{cityname}")
+    public String getCityId(@PathVariable("cityname") String city) {
+        Objects.requireNonNull(city);
+        city = city.toLowerCase();
+        return cityCodeMap.get(city).toString();
+    }
+
+    @RequestMapping("/meta/map")
+    public Map<String, String> getMap() {
+        return cityCodeMap;
+    }
+
 
     @RequestMapping("/ping")
     public String getPing() {
