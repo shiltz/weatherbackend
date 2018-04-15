@@ -1,0 +1,11 @@
+{
+  "priority" : 1,
+  "request": {
+    "method": "GET",
+    "url": "/data/2.5/group?id=1007311%2C993800%2C3369157&units=metric&appid=a3e5e74230a0646be010c776d2c3b119"
+  },
+  "response": {
+    "status": 200,
+    "bodyFileName": "WeatherSummary.json"
+  }
+}

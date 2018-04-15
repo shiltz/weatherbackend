@@ -1,17 +1,20 @@
 package com.shilton.weather.weatherapp.controller;
 
 
+import com.shilton.weather.weatherapp.config.StandaloneConfig;
 import com.shilton.weather.weatherapp.models.*;
 import com.shilton.weather.weatherapp.restclient.WeatherClient;
 import feign.Feign;
 import feign.gson.GsonDecoder;
 import feign.gson.GsonEncoder;
 import feign.okhttp.OkHttpClient;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.PostConstruct;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -23,8 +26,15 @@ import java.util.Objects;
 @CrossOrigin
 public class WeatherController {
 
-    private static final String HTTP_API_OPENWEATHERMAP_ORG = "http://api.openweathermap.org/";
+    @Autowired
+    private StandaloneConfig standaloneConfig;
 
+    private static String HTTP_API_OPENWEATHERMAP_ORG;
+
+    @PostConstruct
+    public void init() {
+        HTTP_API_OPENWEATHERMAP_ORG = standaloneConfig.getHostname();
+    }
 
     @RequestMapping("/current/{city}")
     public CurrentForecast getCurrentWeatherForecast(@PathVariable("city") String city) {
@@ -49,7 +59,7 @@ public class WeatherController {
                 .client(new OkHttpClient())
                 .encoder(new GsonEncoder())
                 .decoder(new GsonDecoder())
-                .target(WeatherClient.class, "http://api.openweathermap.org/");
+                .target(WeatherClient.class, HTTP_API_OPENWEATHERMAP_ORG);
         WeatherForecastSummary weatherForecast = weatherClient.getWeatherForecastSummary(cityCodes.substring(0, cityCodes.length()));
         return weatherForecast;
     }
