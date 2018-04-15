@@ -43,6 +43,12 @@
 			<version>RELEASE</version>
 		</dependency>
 
+		<!-- monitor -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+
 		<!-- start Feign -->
 		<dependency>
 			<groupId>io.github.openfeign</groupId>
