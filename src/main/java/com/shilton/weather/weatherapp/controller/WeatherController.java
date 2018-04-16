@@ -9,6 +9,7 @@ import feign.gson.GsonDecoder;
 import feign.gson.GsonEncoder;
 import feign.okhttp.OkHttpClient;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,6 +38,7 @@ public class WeatherController {
     }
 
     @RequestMapping("/current/{city}")
+    @Cacheable(value = "currentWeatherForecast", key = "#city")
     public CurrentForecast getCurrentWeatherForecast(@PathVariable("city") String city) {
         city = city.toLowerCase();
 

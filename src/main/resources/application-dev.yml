@@ -1,2 +1,5 @@
 api:
     hostname: http://localhost:9999
+spring:
+  cache:
+    type: none
