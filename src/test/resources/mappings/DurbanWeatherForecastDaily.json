@@ -1,0 +1,10 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "/data/2.5/forecast?id=1007311&units=metric&appid=a3e5e74230a0646be010c776d2c3b119"
+  },
+  "response": {
+    "status": 200,
+    "bodyFileName": "DurbanDailyForecast.json"
+  }
+}

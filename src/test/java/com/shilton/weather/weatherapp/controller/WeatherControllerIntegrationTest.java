@@ -52,16 +52,30 @@ public class WeatherControllerIntegrationTest {
 
     @Test
     public void testGetforecast() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/forecast/Durban")
+        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get("/forecast/Durban")
                 .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk());
+                .andExpect(status().isOk())
+                .andReturn();
+
+        String file = testUtility.getString(COM_SHILTON_WEATHER_WEATHERAPP_RESTCLIENT,
+                "/integration/DurbanWeatherForecastController.json",
+                WeatherControllerIntegrationTest.class);
+
+        assertEquals(file, (mvcResult.getResponse().getContentAsString()));
     }
 
     @Test
     public void testGetCurrentWeatherForecast() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/current/Durban")
+        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get("/current/Durban")
                 .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk());
+                .andExpect(status().isOk())
+                .andReturn();
+
+        String file = testUtility.getString(COM_SHILTON_WEATHER_WEATHERAPP_RESTCLIENT,
+                "/integration/DurbanCurrentWeatherController.json",
+                WeatherControllerIntegrationTest.class);
+
+        assertEquals(file, (mvcResult.getResponse().getContentAsString()));
     }
 
     @Test

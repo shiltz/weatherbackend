@@ -72,7 +72,7 @@ public class WeatherController {
                 .client(new OkHttpClient())
                 .encoder(new GsonEncoder())
                 .decoder(new GsonDecoder())
-                .target(WeatherClient.class, "http://api.openweathermap.org/");
+                .target(WeatherClient.class, HTTP_API_OPENWEATHERMAP_ORG);
         HourlyForecast weatherForecast = weatherClient.getHourlyWeatherForecastCity(CityCodeFinder.getCityCode(city));
         LocalDateTime nextDay = LocalDate.now().plusDays(1).atStartOfDay();
         weatherForecast.getList().removeIf(e ->

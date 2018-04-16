@@ -7,4 +7,8 @@ public class Cloud {
     public double getAll() {
         return all;
     }
+
+    public void setAll(double all) {
+        this.all = all;
+    }
 }
