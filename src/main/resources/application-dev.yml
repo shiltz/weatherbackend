@@ -1,5 +1,11 @@
 api:
-    hostname: http://localhost:9999
+  hostname: http://api.openweathermap.org
+
 spring:
   cache:
-    type: none
+    type: ehcache
+    ehcache:
+        config: classpath:ehcache.xml
+logging:
+  level:
+    com.shilton.weather.weatherapp.cache.ehcache: DEBUG
