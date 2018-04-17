@@ -1,15 +1,12 @@
 package com.shilton.weather.weatherapp.controller;
 
-import com.shilton.weather.weatherapp.config.StandaloneConfig;
 import com.shilton.weather.weatherapp.utility.TestUtility;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.cloud.contract.wiremock.AutoConfigureWireMock;
-import org.springframework.context.annotation.Profile;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -24,7 +21,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @AutoConfigureMockMvc
 @AutoConfigureWireMock(port = 9999)
-@ActiveProfiles("dev")
+@ActiveProfiles("test")
 public class WeatherControllerIntegrationTest {
 
     public static final String COM_SHILTON_WEATHER_WEATHERAPP_RESTCLIENT = "/com/shilton/weather/weatherapp/restclient";
