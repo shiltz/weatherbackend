@@ -1,8 +1,11 @@
 package com.shilton.weather.weatherapp.models;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class WeatherForecastCity {
+public class WeatherForecastCity implements Serializable{
+
+    public static final long serialVersionUID = 1L;
 
     private String name;
 

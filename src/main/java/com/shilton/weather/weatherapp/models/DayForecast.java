@@ -1,8 +1,11 @@
 package com.shilton.weather.weatherapp.models;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class DayForecast {
+public class DayForecast implements Serializable{
+
+    public static final long serialVersionUID = 1L;
 
     private long dt;
 

@@ -1,6 +1,10 @@
 package com.shilton.weather.weatherapp.models;
 
-public class CityForecastResponse {
+import java.io.Serializable;
+
+public class CityForecastResponse implements Serializable{
+
+    public static final long serialVersionUID = 1L;
 
     private HourlyForecast hourly;
 

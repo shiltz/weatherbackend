@@ -1,6 +1,10 @@
 package com.shilton.weather.weatherapp.models;
 
-public class Wind {
+import java.io.Serializable;
+
+public class Wind implements Serializable{
+
+    public static final long serialVersionUID = 1L;
 
     private double speed;
 

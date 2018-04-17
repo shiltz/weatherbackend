@@ -1,6 +1,10 @@
 package com.shilton.weather.weatherapp.models;
 
-public class Temp {
+import java.io.Serializable;
+
+public class Temp implements Serializable{
+
+    public static final long serialVersionUID = 1L;
 
     private double day;
 

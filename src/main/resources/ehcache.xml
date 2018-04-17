@@ -1,13 +1,14 @@
-<ehcache>
+<ehcache updateCheck="false">
     <diskStore path="java.io.tmpdir"/>
     <cache name="currentWeatherForecast"
-           maxEntriesLocalHeap="10000"
-           maxEntriesLocalDisk="1000"
+           maxEntriesLocalHeap="3"
+           maxEntriesLocalDisk="3"
            eternal="false"
            diskSpoolBufferSizeMB="20"
-           timeToIdleSeconds="30"
-           timeToLiveSeconds="60"
-           memoryStoreEvictionPolicy="LFU"
-           transactionalMode="off">
+           timeToLiveSeconds="10"
+           memoryStoreEvictionPolicy="LRU">
+        <!--<persistence strategy="localRestartable"/>-->
+        <cacheEventListenerFactory class="com.shilton.weather.weatherapp.cache.ehcache.EhcacheCacheEventListenerFactory"
+                                   listenFor="all" />
     </cache>
 </ehcache>

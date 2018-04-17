@@ -1,6 +1,10 @@
 package com.shilton.weather.weatherapp.models;
 
-public class Coord {
+import java.io.Serializable;
+
+public class Coord implements Serializable{
+
+    public static final long serialVersionUID = 1L;
 
     private double lon;
 
